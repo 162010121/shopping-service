@@ -54,7 +54,7 @@ public class OrderController {
 			boolean exist= items.iterator().hasNext();
 			if (!exist) {
 				System.out.println("Stock not exist so reverting the order");
-				throw new Exception("Stock not available");
+				throw new Exception("Stock not a available");
 			}
 			
 			items.forEach(stock -> {
