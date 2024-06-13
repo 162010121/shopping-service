@@ -52,13 +52,14 @@ public class OrderController {
 			List<Order> items= userRepository.findByProductName(order.getProductName());
 			
 			boolean exist= items.iterator().hasNext();
-			if (!exist) {
+			if (!exist==true) {
 				System.out.println("Stock not exist so reverting the order");
-				throw new Exception("Stock not a available");
+				throw new Exception("Out Of Stock");
 			}
 			
 			items.forEach(stock -> {
-				stock.setQuntity(stock.getQuntity()- order.getQuntity());
+				stock.setQuntity(stock.getQuntity() - order.getQuntity());
+				
 				userRepository.save(stock);
 				
 				quntity.setProductName(stock.getProductName());
